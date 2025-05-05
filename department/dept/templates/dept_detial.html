@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<div class="table">
+    <div class="tab">
+        <a href='{% url 'adddept' %}' id="create">Create Department</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Department Name</th>
+                    <th>Description</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dept in depts %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ dept.Department_Name }}</td>
+                    <td>{{ dept.Department_description }}</td>
+                    <td class="td"><a class="but" href="{% url 'editdept' dept.id %}">Edit</a></td>
+                    <td class="td"><a style="background-color: rgb(175, 16, 16);" class="but" href="{% url 'conf_del' dept.id %}">Delete</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
